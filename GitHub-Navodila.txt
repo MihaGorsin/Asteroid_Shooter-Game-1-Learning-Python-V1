@@ -43,4 +43,4 @@
 # git clone https://github.com/MihaGorsin/Asteroid_Shooter-Game-1-Learning-Python-V1.git
 # cd Asteroid_Shooter-Game-1-Learning-Python-V1
 # git config --global user.name "Miha Gorsin"
-# git config --global user.email "miha.gorsin@gmail.com"
+# git config --global user.email "email"
