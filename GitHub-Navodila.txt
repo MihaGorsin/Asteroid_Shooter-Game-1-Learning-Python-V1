@@ -1,0 +1,46 @@
+# ================================
+# GIT WORKFLOW (DAILY STEPS)
+# ================================
+
+# 1. Odpri terminal v mapi projekta
+# cd D:\Programiranje\GitHub\Asteroid_Shooter-Game-1-Learning-Python-V1
+# (ali doma: cd ~/Documents/Programiranje/Asteroid_Shooter-Game-1-Learning-Python-V1)
+
+# 2. Posodobi lokalni repo iz GitHuba
+# git pull
+
+# 3. Urejaj kodo v VS Code
+# (shrani datoteke Ctrl+S)
+
+# 4. Preveri stanje (opcijsko)
+# git status
+
+# 5. Dodaj spremembe v staging
+# git add .
+
+# 6. Naredi commit (opis sprememb)
+# git commit -m "opis spremembe"
+
+# 7. Pošlji na GitHub
+# git push
+
+# ================================
+# WORKFLOW MED DVEMA RAČUNALNIKOMA
+# ================================
+
+# NA PC1:
+# git add .
+# git commit -m "opis"
+# git push
+
+# NA PC2:
+# git pull
+
+# ================================
+# PRVIČ NA NOVEM RAČUNALNIKU
+# ================================
+
+# git clone https://github.com/MihaGorsin/Asteroid_Shooter-Game-1-Learning-Python-V1.git
+# cd Asteroid_Shooter-Game-1-Learning-Python-V1
+# git config --global user.name "Miha Gorsin"
+# git config --global user.email "miha.gorsin@gmail.com"
