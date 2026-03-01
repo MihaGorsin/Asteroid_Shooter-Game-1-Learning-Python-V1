@@ -1,74 +1,44 @@
-import pygame, sys #sistem smo importali, da lahko celo zadevo uganemo
+import pygame, sys
 
-# Vse pygame sisteme moramo zagnati
 pygame.init()
-# Nastavimo širino in višino ekrana
-WINDOW_WIDTH, WINDOW_HEIGHT = 1280, 720
-# nastavimo velikost okna programa
+WINDOW_WIDTH, WINDOW_HEIGHT = 1280,720
 display_surface = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT))
-# Ime, ki bo na okviru okna
-pygame.display.set_caption('Neteor shooter')
-
-
-#za FPS
+pygame.display.set_caption('Meteor shooter')
 clock = pygame.time.Clock()
 
-# Surface je grafična površina
-#test_surface = pygame.Surface((400,100))
-# Surface rabimo pritrditi na display surface
+# importing images 
+ship_surf = pygame.image.load('./Grafike/ship.png').convert_alpha()
+ship_rect = ship_surf.get_rect(center = (WINDOW_WIDTH / 2,WINDOW_HEIGHT / 2))
+bg_surf = pygame.image.load('./Grafike/background.png').convert()
 
-# import font
-font = pygame.font.Font('PixelifySans-VariableFont_wght.ttf', 50)
-# Ta false je aa antyaliesing ali nekiaj - gre za robove
-text_surf = font.render('Ladja', False, (255,255,255))
-text_rect = text_surf.get_rect(midbottom = (WINDOW_WIDTH/2, WINDOW_HEIGHT - 80))
+# import text 
+font = pygame.font.Font('./Grafike/subatomic.ttf', 50)
+text_surf = font.render('Space', True, (255,255,255))
+text_rect = text_surf.get_rect(midbottom = (WINDOW_WIDTH / 2, WINDOW_HEIGHT - 80))
 
-#Rabiš convertat v convert ali convert alpha
-ship_surf = pygame.image.load('./Grafike/Ladja-1.png').convert_alpha()
-ship_rect = ship_surf.get_rect(center = (WINDOW_WIDTH/2, WINDOW_HEIGHT/2))
+while True: # run forever -> keeps our game running
 
+	# 1. input -> events (mouse click, mouse movement, press of a button, controller or touchscreen)
+	for event in pygame.event.get():
+		if event.type == pygame.QUIT:
+			pygame.quit()
+			sys.exit()
 
-ozadje = pygame.image.load('./Grafike/Ozadje.png').convert()
-
-smer_premika = 3
-# Test animacije ladje
-
-ship_pos = (0,0)
+			ship_rect.center = event.pos
 
 
-
-while True: # To bo v neskončnost loopalo
-
-    # 1. input
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            pygame.quit()
-            sys.exit()
-        
-        if event.type == pygame.MOUSEMOTION:
-            ship_rect.center = event.pos
-        
-        if event.type == pygame.MOUSEBUTTONDOWN:
-            print('Boom')
+	# framerate limit
+	clock.tick(120)
 
 
+	ship_rect.center = pygame.mouse.get_pos()
+
+	# 2. updates 
+	display_surface.fill((0, 0, 0)) 
+	display_surface.blit(bg_surf,(0,0))
+	display_surface.blit(ship_surf,ship_rect)
+	display_surface.blit(text_surf,text_rect)
 
 
-
-
-    # Frame limit
-    clock.tick(60)
-
-
-
-    # 2. updates
-    display_surface.fill('dark gray')
-    display_surface.blit(ozadje, (0,0))
-    display_surface.blit(ship_surf,(ship_rect))
-    display_surface.blit(text_surf, text_rect)
-    
-    
-
-    # 3.show the frame to the player / update the display surface
-    pygame.display.update()
-
+	# 3. show the frame to the player / update the display surface
+	pygame.display.update()

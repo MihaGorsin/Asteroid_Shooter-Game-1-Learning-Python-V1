@@ -44,3 +44,9 @@
 # cd Asteroid_Shooter-Game-1-Learning-Python-V1
 # git config --global user.name "Miha Gorsin"
 # git config --global user.email "email"
+
+# --------------------------------
+# Če bi razsul datoteko
+# --------------------------------
+# git restore main.py
+# git restore .
