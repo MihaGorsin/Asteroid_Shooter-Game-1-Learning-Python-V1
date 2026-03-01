@@ -26,12 +26,15 @@ text_rect = text_surf.get_rect(midbottom = (WINDOW_WIDTH/2, WINDOW_HEIGHT - 80))
 #Rabiš convertat v convert ali convert alpha
 ship_surf = pygame.image.load('./Grafike/Ladja-1.png').convert_alpha()
 ship_rect = ship_surf.get_rect(center = (WINDOW_WIDTH/2, WINDOW_HEIGHT/2))
-print(ship_rect)
+
 
 ozadje = pygame.image.load('./Grafike/Ozadje.png').convert()
 
 smer_premika = 3
 # Test animacije ladje
+
+ship_pos = (0,0)
+
 
 
 while True: # To bo v neskončnost loopalo
@@ -41,12 +44,18 @@ while True: # To bo v neskončnost loopalo
         if event.type == pygame.QUIT:
             pygame.quit()
             sys.exit()
-    ship_rect.x -= smer_premika
-    if ship_rect.x < 0:
-        smer_premika = -3
+        
+        if event.type == pygame.MOUSEMOTION:
+            ship_rect.center = event.pos
+        
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            print('Boom')
 
-    if ship_rect.x > 350:
-        smer_premika = 3
+
+
+
+
+
     # Frame limit
     clock.tick(60)
 
@@ -54,9 +63,9 @@ while True: # To bo v neskončnost loopalo
 
     # 2. updates
     display_surface.fill('dark gray')
-    display_surface.blit(ozadje)
+    display_surface.blit(ozadje, (0,0))
     display_surface.blit(ship_surf,(ship_rect))
-    display_surface.blit(text_surf,text_rect)
+    display_surface.blit(text_surf, text_rect)
     
     
 
